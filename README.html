@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nora Frank | Software & Cybersecurity Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- General Styling and Fonts --- */
+        :root {
+            --dark-bg: #1a1a1a;
+            --text-light: #f4f4f4;
+            --accent-primary: #00bcd4; /* Cyan/Aqua for emphasis */
+            --accent-secondary: #ff9800; /* Orange for interaction/hover */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            transition: background-color 0.5s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+
+        /* --- Banner Section --- */
+        .banner {
+            background-color: #000;
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 5px solid var(--accent-primary);
+        }
+
+        .banner h1 {
+            font-family: var(--font-serif);
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 5px;
+            color: var(--text-light);
+        }
+
+        .banner p {
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 10px 0 30px;
+            color: var(--text-light);
+        }
+
+        .contact-info {
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            padding-top: 10px;
+            border-top: 1px solid var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: var(--text-light);
+        }
+        
+        /* --- Section Styles --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .about-me {
+            background-color: #222;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .about-me p {
+            max-width: 900px;
+            margin: 20px auto;
+            font-size: 1.1em;
+        }
+        
+        /* --- Card Styles (Experience/Projects) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #2b2b2b;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border-left: 5px solid var(--accent-primary);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+            border-left-color: var(--accent-secondary);
+        }
+        
+        .card h3 {
+            color: var(--accent-secondary);
+            font-family: var(--font-serif);
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+        }
+
+        /* --- Skills Styling (Interactive Element) --- */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .skills-list li {
+            display: inline-block;
+            background: #3a3a3a;
+            color: var(--accent-primary);
+            padding: 10px 20px;
+            margin: 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .skills-list li:hover {
+            background: var(--accent-primary);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--accent-primary);
+        }
+        
+        .proficiency-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .proficiency-toggle button {
+            background-color: var(--accent-secondary);
+            color: var(--dark-bg);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .proficiency-toggle button:hover {
+            background-color: #e68900;
+        }
+        
+        .skill-level {
+            display: none; /* Hidden by default */
+            margin-left: 10px;
+            font-style: italic;
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        /* --- Footer and Links --- */
+        footer {
+            background: #000;
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 5px solid var(--accent-secondary);
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+        
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 3em;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="banner">
+        <div class="container">
+            <h1>NORA FRANK</h1>
+            <p>"Dreaming in code, solving in logic"</p>
+            <div class="contact-info">
+                <span>ST. JOSEPH COLLEGE, IRINJALAKUDA</span>
+                <span>|</span>
+                <span>+91 8891084791</span>
+                <span>|</span>
+                <span>NORAIJK@GMAIL.COM</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="about-me">
+        <div class="container">
+            <h2>👋 About Me</h2>
+            <p>A driven **BCA student** and aspiring **Software Developer** & **Cybersecurity enthusiast**. I combine a solid foundation in programming and system design with a creative approach to problem-solving, always motivated to build robust, practical solutions.</p>
+            <p>I'm currently leading innovative research on **hybrid AI-IoT convergence** to develop adaptive healthcare systems. I am **Certified** in Ethical Hacking (Cisco), Generative AI (IBM), and Software Engineering Essentials (Coursera).</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>💼 Experience & Leadership</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>Software Development Intern</h3>
+                    <p>FUSIONTECH Display Solutions, Jeddah (04/2025 - 05/2025)</p>
+                    <ul>
+                        <li>Spearheaded core monitoring module design for factory production capacity.</li>
+                        <li>Collaborated on nationwide tracking features for installation sites and dispatch schedules.</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Data Analyst Intern</h3>
+                    <p>Kerala State Electronics Development Corporation Ltd (07/2025 - 06/2025)</p>
+                    <ul>
+                        <li>Gained practical exposure to core Python data libraries: **NumPy, Pandas, Matplotlib, and Seaborn**.</li>
+                        <li>Completed intensive one-week workshop on Machine Learning and Data Science workflows.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>CDIT DCA Mentor Intern</h3>
+                    <p>Instructional Leadership (07/2025 - Present)</p>
+                    <ul>
+                        <li>Guiding students through the Diploma in Computer Applications (DCA) syllabus.</li>
+                        <li>Facilitating practical sessions on basic programming and data management principles.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Skill Champion, ASAP Kerala</h3>
+                    <p>Leadership & Training</p>
+                    <ul>
+                        <li>Trained **over 75 mentors** within the college on the significance of AI in their respective fields.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" style="background-color: #222;">
+        <div class="container">
+            <h2>🚀 Featured Projects</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>Automated Attendance Tracker (R&D)</h3>
+                    <p><strong>Tech:</strong> Python, Arduino, Ultrasonic Sensors, Facial Recognition</p>
+                    <p>Designed an automated system integrating sensors and facial recognition to log entries, compiling and visualizing daily data.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Smart Home Security System</h3>
+                    <p><strong>Tech:</strong> Arduino UNO, Java, Serial Communication</p>
+                    <p>Developed a security system using an ultrasonic sensor for motion detection and a Java-based UI for monitoring and control.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Gesture-Controlled Game</h3>
+                    <p><strong>Tech:</strong> Python, MediaPipe, Arduino UNO</p>
+                    <p>Built a Python game using MediaPipe for gesture recognition, integrated with Arduino LEDs and a buzzer for dynamic feedback.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>🛠️ Technical Skills</h2>
+            <div class="proficiency-toggle">
+                <button onclick="toggleProficiency()">💡 Click for Proficiency Levels</button>
+            </div>
+            
+            <ul class="skills-list">
+                <li data-level="Intermediate">Python <span class="skill-level">(Intermediate)</span></li>
+                <li data-level="Intermediate">C programming <span class="skill-level">(Intermediate)</span></li>
+                <li data-level="Strong">SQL / MySQL <span class="skill-level">(Strong)</span></li>
+                <li data-level="Basic">HTML / Web Development <span class="skill-level">(Basic)</span></li>
+                <li data-level="Strong">Data Structures <span class="skill-level">(Strong)</span></li>
+                <li data-level="Expert">MicroPython <span class="skill-level">(Expert)</span></li>
+                <li data-level="Practical">NumPy, Pandas, Seaborn <span class="skill-level">(Practical Exposure)</span></li>
+                <li data-level="Certified">Ethical Hacking / Cybersecurity <span class="skill-level">(Certified)</span></li>
+                <li data-level="Expert">Arduino UNO / IoT <span class="skill-level">(Expert)</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nora Frank. Built with passion.</p>
+            <p>
+                <a href="https://github.com/YourGitHubUsername" target="_blank">GitHub Profile</a> |
+                <a href="https://www.linkedin.com/in/nora-frank-01803327a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LinkedIn Profile</a> |
+                <a href="mailto:noraijk@gmail.com">Contact via Email</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleProficiency() {
+            const skillLevels = document.querySelectorAll('.skill-level');
+            const button = document.querySelector('.proficiency-toggle button');
+            
+            let isVisible = false;
+
+            // Check if any level is currently visible
+            skillLevels.forEach(level => {
+                if (level.style.display === 'inline') {
+                    isVisible = true;
+                }
+            });
+
+            // Toggle visibility and button text
+            skillLevels.forEach(level => {
+                if (isVisible) {
+                    level.style.display = 'none';
+                    level.closest('li').style.background = '#3a3a3a'; // Revert background
+                    level.closest('li').style.color = 'var(--accent-primary)'; // Revert color
+                } else {
+                    level.style.display = 'inline';
+                    // Change background/color based on level for better emphasis when visible
+                    const levelText = level.closest('li').getAttribute('data-level');
+                    if (levelText === 'Expert' || levelText === 'Certified') {
+                        level.closest('li').style.background = 'var(--accent-primary)';
+                        level.closest('li').style.color = 'var(--dark-bg)';
+                    } else if (levelText === 'Strong') {
+                        level.closest('li').style.background = '#4CAF50'; // Green
+                    }
+                }
+            });
+
+            button.textContent = isVisible ? '💡 Click for Proficiency Levels' : '✅ Proficiency Levels Active';
+        }
+    </script>
+</body>
+</html>
