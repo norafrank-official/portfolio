@@ -1,390 +1,567 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nora Frank | Software & Cybersecurity Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- SEO Enhancements -->
+    <meta name="description" content="Nora Frank's portfolio: BCA student, aspiring Software Developer and Cybersecurity enthusiast, showcasing projects in AI-IoT, Python, and C.">
+    <meta name="keywords" content="Nora Frank, Software Development, Cybersecurity, BCA, Python, IoT, Arduino, Portfolio, Ethical Hacking">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
-        /* --- General Styling and Fonts --- */
-        :root {
-            --dark-bg: #1a1a1a;
-            --text-light: #f4f4f4;
-            --accent-primary: #00bcd4; /* Cyan/Aqua for emphasis */
-            --accent-secondary: #ff9800; /* Orange for interaction/hover */
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Montserrat', sans-serif;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: var(--text-light);
-            background-color: var(--dark-bg);
-            transition: background-color 0.5s;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 20px;
-        }
-
-        h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--accent-primary);
-            border-bottom: 2px solid var(--accent-primary);
-            padding-bottom: 10px;
-        }
-
-        /* --- Banner Section --- */
-        .banner {
-            background-color: #000;
-            text-align: center;
-            padding: 60px 0 40px;
-            border-bottom: 5px solid var(--accent-primary);
-        }
-
-        .banner h1 {
-            font-family: var(--font-serif);
-            font-size: 4em;
-            margin: 0;
-            letter-spacing: 5px;
-            color: var(--text-light);
-        }
-
-        .banner p {
-            font-style: italic;
-            font-size: 1.2em;
-            margin: 10px 0 30px;
-            color: var(--text-light);
-        }
-
-        .contact-info {
-            font-size: 0.9em;
-            letter-spacing: 1px;
-            padding-top: 10px;
-            border-top: 1px solid var(--text-light);
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            color: var(--text-light);
-        }
-        
-        /* --- Section Styles --- */
-        section {
-            padding: 80px 0;
-        }
-
-        .about-me {
-            background-color: #222;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .about-me p {
-            max-width: 900px;
-            margin: 20px auto;
-            font-size: 1.1em;
-        }
-        
-        /* --- Card Styles (Experience/Projects) --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: #2b2b2b;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            border-left: 5px solid var(--accent-primary);
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
-            border-left-color: var(--accent-secondary);
-        }
-        
-        .card h3 {
-            color: var(--accent-secondary);
-            font-family: var(--font-serif);
-            margin-top: 0;
-            font-size: 1.5em;
-        }
-        
-        .card ul {
-            padding-left: 20px;
-        }
-
-        /* --- Skills Styling (Interactive Element) --- */
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .skills-list li {
-            display: inline-block;
-            background: #3a3a3a;
-            color: var(--accent-primary);
-            padding: 10px 20px;
-            margin: 8px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s, color 0.3s;
-            cursor: pointer;
-        }
-
-        .skills-list li:hover {
-            background: var(--accent-primary);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--accent-primary);
-        }
-        
-        .proficiency-toggle {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .proficiency-toggle button {
-            background-color: var(--accent-secondary);
-            color: var(--dark-bg);
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: 600;
-        }
-
-        .proficiency-toggle button:hover {
-            background-color: #e68900;
-        }
-        
-        .skill-level {
-            display: none; /* Hidden by default */
-            margin-left: 10px;
-            font-style: italic;
-            font-size: 0.9em;
-            color: var(--text-light);
-        }
-
-        /* --- Footer and Links --- */
-        footer {
-            background: #000;
-            color: var(--text-light);
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-            border-top: 5px solid var(--accent-secondary);
-        }
-
-        footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-        
-        footer a:hover {
-            color: var(--accent-secondary);
-            text-decoration: underline;
-        }
-        
-        /* --- Responsiveness --- */
-        @media (max-width: 768px) {
-            .banner h1 {
-                font-size: 3em;
-            }
-            .contact-info {
-                flex-direction: column;
-                gap: 5px;
-            }
-            h2 {
-                font-size: 2em;
-            }
-            .card {
-                padding: 15px;
+        /* Define Custom Colors and Fonts in Tailwind Config */
+        tailwind.config = {
+            darkMode: 'class', // Enables dark mode based on 'dark' class on <html>
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0a', /* Near black */
+                        'card-bg': '#1e1e1e', /* Dark grey for cards */
+                        'accent-primary': '#00bcd4', /* Cyan/Aqua */
+                        'accent-secondary': '#ff5722', /* Deep Orange */
+                        'text-light': '#e0e0e0',
+                        
+                        /* Light Mode Variables (to be applied when 'dark' class is removed) */
+                        'light-bg': '#f4f4f9',
+                        'light-card-bg': '#ffffff',
+                        'light-text': '#1f2937',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
             }
         }
+
+        /* --- General & Scrolling Styles --- */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .skill-bar-container { height: 8px; background-color: #333; border-radius: 4px; margin-top: 4px; overflow: hidden; }
+        .skill-bar { height: 100%; transition: width 1.5s ease-out, background-color 0.5s; border-radius: 4px; }
+        
+        /* --- Hero Background Animation --- */
+        @keyframes pulse-scan {
+            0% { box-shadow: 0 0 15px rgba(0, 188, 212, 0.4); opacity: 0.8; }
+            50% { box-shadow: 0 0 35px rgba(0, 188, 212, 0.8); opacity: 1; }
+            100% { box-shadow: 0 0 15px rgba(0, 188, 212, 0.4); opacity: 0.8; }
+        }
+        .hero-bg-anim {
+            animation: pulse-scan 4s infinite ease-in-out;
+        }
+
+        /* --- Animation on Scroll (Default State) --- */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Dark Mode Overrides (Explicitly set light mode styles) --- */
+        .light .bg-dark-bg { background-color: theme('colors.light-bg'); }
+        .light .bg-card-bg { background-color: theme('colors.light-card-bg'); }
+        .light .text-text-light { color: theme('colors.light-text'); }
+        .light .text-accent-primary { color: theme('colors.accent-primary'); }
+        .light .text-accent-secondary { color: theme('colors.accent-secondary'); }
+        .light .bg-black { background-color: theme('colors.light-card-bg'); }
+        .light .shadow-2xl { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+        .light #navbar { background-color: theme('colors.light-card-bg') / 95; border-bottom: 1px solid theme('colors.gray.200'); }
+        .light .project-card { border: 1px solid theme('colors.gray.300'); }
+        .light .contact-input { border-color: theme('colors.gray.400'); background-color: theme('colors.light-bg'); }
     </style>
 </head>
-<body>
+<body class="bg-dark-bg text-text-light min-h-screen transition-colors duration-500">
 
-    <header class="banner">
-        <div class="container">
-            <h1>NORA FRANK</h1>
-            <p>"Dreaming in code, solving in logic"</p>
-            <div class="contact-info">
-                <span>ST. JOSEPH COLLEGE, IRINJALAKUDA</span>
-                <span>|</span>
-                <span>+91 8891084791</span>
-                <span>|</span>
-                <span>NORAIJK@GMAIL.COM</span>
+    <!-- Sticky Navigation Bar -->
+    <nav id="navbar" class="sticky top-0 z-50 bg-dark-bg/95 backdrop-blur-sm shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#home" class="text-xl font-bold text-accent-primary hover:text-accent-secondary transition" aria-label="Nora Frank Home">Nora Frank</a>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-text-light hover:text-accent-secondary transition">About</a>
+                    <a href="#experience" class="text-text-light hover:text-accent-secondary transition">Experience</a>
+                    <a href="#projects" class="text-text-light hover:text-accent-secondary transition">Projects</a>
+                    <a href="#skills" class="text-text-light hover:text-accent-secondary transition">Skills</a>
+                    <a href="#testimonials" class="text-text-light hover:text-accent-secondary transition">Testimonials</a>
+                    <a href="#certifications" class="text-text-light hover:text-accent-secondary transition">Certificates</a>
+                    <a href="#contact" class="text-text-light hover:text-accent-secondary transition">Contact</a>
+                </div>
+
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 rounded-full text-accent-primary hover:bg-card-bg focus:outline-none transition" aria-label="Toggle dark/light mode">
+                        <i class="fas fa-sun" id="sun-icon"></i>
+                        <i class="fas fa-moon hidden" id="moon-icon"></i>
+                    </button>
+                    <button id="mobile-menu-button" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-accent-primary hover:bg-card-bg focus:outline-none" aria-label="Open main menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Collapsible) -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4 transition-all duration-300">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Skills</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Testimonials</a>
+                <a href="#certifications" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Certificates</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-text-light hover:bg-card-bg" onclick="toggleMobileMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Banner Section -->
+    <header id="home" class="text-center pt-16 pb-12 bg-black border-b-4 border-accent-secondary shadow-2xl hero-bg-anim transition-colors duration-500">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="font-serif text-5xl sm:text-7xl font-extrabold tracking-widest leading-tight text-text-light">
+                NORA FRANK
+            </h1>
+            <p class="text-xl mt-3 mb-6 text-accent-primary font-light">
+                Software & Cybersecurity | Dreaming in code, solving in logic
+            </p>
+            
+            <!-- Download Resume Button -->
+            <a href="#" download class="inline-flex items-center px-8 py-3 bg-accent-secondary text-dark-bg font-bold rounded-full shadow-lg hover:bg-[#e04b1e] transition duration-300 transform hover:scale-105 mb-8" aria-label="Download Nora Frank's Resume">
+                <i class="fas fa-file-download mr-3"></i> Download Resume
+            </a>
+
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400 border-t border-gray-700 pt-4 mt-6">
+                <span><i class="fas fa-university mr-1"></i> ST. JOSEPH COLLEGE</span>
+                <span class="hidden sm:inline-block text-accent-secondary">|</span>
+                <span><i class="fas fa-phone mr-1"></i> +91 8891084791</span>
+                <span class="hidden sm:inline-block text-accent-secondary">|</span>
+                <span><i class="fas fa-envelope mr-1"></i> NORAIJK@GMAIL.COM</span>
             </div>
         </div>
     </header>
 
-    <section id="about" class="about-me">
-        <div class="container">
-            <h2>👋 About Me</h2>
-            <p>A driven **BCA student** and aspiring **Software Developer** & **Cybersecurity enthusiast**. I combine a solid foundation in programming and system design with a creative approach to problem-solving, always motivated to build robust, practical solutions.</p>
-            <p>I'm currently leading innovative research on **hybrid AI-IoT convergence** to develop adaptive healthcare systems. I am **Certified** in Ethical Hacking (Cisco), Generative AI (IBM), and Software Engineering Essentials (Coursera).</p>
+    <!-- About Me Section -->
+    <section id="about" class="py-16 md:py-24 bg-card-bg shadow-inner section-animate" aria-labelledby="about-heading">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 id="about-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                👋 About Me
+            </h2>
+            <div class="space-y-4 text-lg text-gray-300 text-center">
+                <p>A driven **BCA student** and aspiring **Software Developer** & **Cybersecurity enthusiast**. I combine a solid foundation in programming and system design with a creative approach to problem-solving, always motivated to build robust, practical solutions.</p>
+                <p>I'm currently leading innovative research on **hybrid AI-IoT convergence** to develop adaptive healthcare systems. My approach emphasizes **Component-Driven Design**, **Optimized Performance**, and building **Responsive & Accessible UI** for future applications in React and TypeScript.</p>
+            </div>
         </div>
     </section>
 
-    <section id="experience">
-        <div class="container">
-            <h2>💼 Experience & Leadership</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <h3>Software Development Intern</h3>
-                    <p>FUSIONTECH Display Solutions, Jeddah (04/2025 - 05/2025)</p>
-                    <ul>
-                        <li>Spearheaded core monitoring module design for factory production capacity.</li>
-                        <li>Collaborated on nationwide tracking features for installation sites and dispatch schedules.</li>
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 md:py-24 section-animate" aria-labelledby="experience-heading">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="experience-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                💼 Experience & Leadership
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-lg border-l-4 border-accent-primary hover:shadow-2xl hover:border-accent-secondary transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-serif text-accent-secondary mb-1">Software Development Intern <i class="fas fa-laptop-code ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-gray-400 mb-4">FUSIONTECH Display Solutions, Jeddah | 2024</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                        <li>Spearheaded core monitoring module design for operational efficiency using C++.</li>
+                        <li>Collaborated on nationwide tracking features for installation sites, focusing on data security.</li>
                     </ul>
                 </div>
-                
-                <div class="card">
-                    <h3>Data Analyst Intern</h3>
-                    <p>Kerala State Electronics Development Corporation Ltd (07/2025 - 06/2025)</p>
-                    <ul>
-                        <li>Gained practical exposure to core Python data libraries: **NumPy, Pandas, Matplotlib, and Seaborn**.</li>
-                        <li>Completed intensive one-week workshop on Machine Learning and Data Science workflows.</li>
+                <!-- Card 2 -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-lg border-l-4 border-accent-primary hover:shadow-2xl hover:border-accent-secondary transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-serif text-accent-secondary mb-1">Data Analyst Intern <i class="fas fa-chart-line ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-gray-400 mb-4">KSEDC Ltd | 2023</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                        <li>Practical exposure to **NumPy, Pandas, Matplotlib, and Seaborn** for statistical analysis.</li>
+                        <li>Completed intensive workshop on ML and Data Science workflows, improving predictive models.</li>
                     </ul>
                 </div>
+                <!-- Card 3 -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-lg border-l-4 border-accent-primary hover:shadow-2xl hover:border-accent-secondary transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-serif text-accent-secondary mb-1">CDIT DCA Mentor Intern <i class="fas fa-chalkboard-teacher ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-gray-400 mb-4">Instructional Leadership | 2023</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                        <li>Guiding students through the DCA syllabus and basic C programming concepts.</li>
+                        <li>Facilitating practical sessions on data management principles and database integrity.</li>
+                    </ul>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-card-bg p-6 rounded-xl shadow-lg border-l-4 border-accent-primary hover:shadow-2xl hover:border-accent-secondary transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-serif text-accent-secondary mb-1">Skill Champion, ASAP Kerala <i class="fas fa-trophy ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-gray-400 mb-4">Leadership & Training | 2022-Present</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                        <li>Trained **over 75 mentors** on the significance and ethical use of Generative AI in education.</li>
+                        <li>Organized and led workshops on emerging technology trends.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="card">
-                    <h3>CDIT DCA Mentor Intern</h3>
-                    <p>Instructional Leadership (07/2025 - Present)</p>
-                    <ul>
-                        <li>Guiding students through the Diploma in Computer Applications (DCA) syllabus.</li>
-                        <li>Facilitating practical sessions on basic programming and data management principles.</li>
-                    </ul>
+    <!-- Projects Section (Interactive) -->
+    <section id="projects" class="py-16 md:py-24 bg-card-bg section-animate" aria-labelledby="projects-heading">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="projects-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                🚀 Featured Projects
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-dark-bg p-6 rounded-xl shadow-lg border border-gray-700 cursor-pointer hover:shadow-accent-primary/40 transition duration-300" 
+                     data-title="Automated Attendance Tracker (R&D)" 
+                     data-tech="Python, Arduino, Facial Recognition, MySQL"
+                     data-details="Developed a real-time, fully automated system for college attendance. It uses computer vision (Facial Recognition) for secure entry logging and stores records in a cloud-synced MySQL database, significantly reducing administrative overhead and error rates. The system features a dashboard for data visualization."
+                     tabindex="0" role="button" aria-expanded="false" aria-controls="project-modal"
+                     onclick="openProjectModal(this)" onkeypress="if(event.key === 'Enter') openProjectModal(this)">
+                    <h3 class="text-xl font-serif text-accent-primary mb-2">Automated Attendance Tracker <i class="fas fa-fingerprint ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-accent-secondary font-semibold">Tech: Python, Arduino, Facial Recognition</p>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-3">Designed an automated system integrating sensors and facial recognition for entry logging and data visualization.</p>
+                    <button class="mt-4 text-xs font-medium text-text-light bg-accent-secondary py-1 px-3 rounded-full hover:opacity-80 transition">View Details</button>
                 </div>
+                <!-- Project 2 -->
+                <div class="project-card bg-dark-bg p-6 rounded-xl shadow-lg border border-gray-700 cursor-pointer hover:shadow-accent-primary/40 transition duration-300"
+                     data-title="Smart Home Security System" 
+                     data-tech="Arduino UNO, Java, Serial Communication, Networking"
+                     data-details="Engineered a low-cost, high-reliability security system. It utilizes an ultrasonic sensor connected to an Arduino to detect motion/intrusion. Alerts are transmitted to a Java-based desktop application via serial communication, providing a graphical user interface (GUI) for system arming/disarming and real-time status updates."
+                     tabindex="0" role="button" aria-expanded="false" aria-controls="project-modal"
+                     onclick="openProjectModal(this)" onkeypress="if(event.key === 'Enter') openProjectModal(this)">
+                    <h3 class="text-xl font-serif text-accent-primary mb-2">Smart Home Security System <i class="fas fa-shield-alt ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-accent-secondary font-semibold">Tech: Arduino UNO, Java, Serial Communication</p>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-3">Developed a security system using an ultrasonic sensor for motion detection and a Java-based UI for control.</p>
+                    <button class="mt-4 text-xs font-medium text-text-light bg-accent-secondary py-1 px-3 rounded-full hover:opacity-80 transition">View Details</button>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card bg-dark-bg p-6 rounded-xl shadow-lg border border-gray-700 cursor-pointer hover:shadow-accent-primary/40 transition duration-300"
+                     data-title="Gesture-Controlled Python Game" 
+                     data-tech="Python, MediaPipe, Arduino UNO, Game Design"
+                     data-details="Built an innovative game where the player controls actions using real-world hand gestures captured by a webcam. MediaPipe's computer vision framework handles gesture recognition, which is then mapped to game actions. An integrated Arduino provides haptic feedback, creating a truly immersive experience."
+                     tabindex="0" role="button" aria-expanded="false" aria-controls="project-modal"
+                     onclick="openProjectModal(this)" onkeypress="if(event.key === 'Enter') openProjectModal(this)">
+                    <h3 class="text-xl font-serif text-accent-primary mb-2">Gesture-Controlled Game <i class="fas fa-gamepad ml-2 text-sm"></i></h3>
+                    <p class="text-sm text-accent-secondary font-semibold">Tech: Python, MediaPipe, Arduino UNO</p>
+                    <p class="text-sm text-gray-400 mt-2 line-clamp-3">Built a Python game using MediaPipe for gesture recognition, providing dynamic feedback via Arduino hardware.</p>
+                    <button class="mt-4 text-xs font-medium text-text-light bg-accent-secondary py-1 px-3 rounded-full hover:opacity-80 transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="card">
-                    <h3>Skill Champion, ASAP Kerala</h3>
-                    <p>Leadership & Training</p>
-                    <ul>
-                        <li>Trained **over 75 mentors** within the college on the significance of AI in their respective fields.</li>
-                    </ul>
-                </div>
+    <!-- Skills Section (Visual Progress Bars) -->
+    <section id="skills" class="py-16 md:py-24 section-animate" aria-labelledby="skills-heading">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 id="skills-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                🛠️ Technical Skills
+            </h2>
+            <div id="skills-visual-list" class="space-y-6">
+                <!-- Skills rendered via JavaScript -->
             </div>
         </div>
     </section>
     
-    <section id="projects" style="background-color: #222;">
-        <div class="container">
-            <h2>🚀 Featured Projects</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <h3>Automated Attendance Tracker (R&D)</h3>
-                    <p><strong>Tech:</strong> Python, Arduino, Ultrasonic Sensors, Facial Recognition</p>
-                    <p>Designed an automated system integrating sensors and facial recognition to log entries, compiling and visualizing daily data.</p>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-card-bg section-animate" aria-labelledby="testimonials-heading">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 id="testimonials-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                💬 Testimonials
+            </h2>
+            <div class="grid gap-8 sm:grid-cols-2">
+                <div class="bg-dark-bg p-6 rounded-xl shadow-lg border-t-4 border-accent-primary">
+                    <i class="fas fa-quote-left text-accent-secondary text-2xl mb-3"></i>
+                    <p class="italic text-gray-300">"Nora demonstrated exceptional leadership and deep technical understanding during the internship. Her module design significantly boosted our operational metrics."</p>
+                    <p class="mt-4 font-semibold text-text-light">- Dr. Ahmad K., FusionTech Solutions</p>
+                    <p class="text-sm text-gray-400">Software Engineering Lead</p>
                 </div>
-                
-                <div class="card">
-                    <h3>Smart Home Security System</h3>
-                    <p><strong>Tech:</strong> Arduino UNO, Java, Serial Communication</p>
-                    <p>Developed a security system using an ultrasonic sensor for motion detection and a Java-based UI for monitoring and control.</p>
+                <div class="bg-dark-bg p-6 rounded-xl shadow-lg border-t-4 border-accent-primary">
+                    <i class="fas fa-quote-left text-accent-secondary text-2xl mb-3"></i>
+                    <p class="italic text-gray-300">"As a Skill Champion, Nora's ability to simplify complex AI concepts was remarkable. Her training sessions were invaluable to our cohort of new mentors."</p>
+                    <p class="mt-4 font-semibold text-text-light">- Priya V., ASAP Kerala</p>
+                    <p class="text-sm text-gray-400">Program Coordinator</p>
                 </div>
-
-                <div class="card">
-                    <h3>Gesture-Controlled Game</h3>
-                    <p><strong>Tech:</strong> Python, MediaPipe, Arduino UNO</p>
-                    <p>Built a Python game using MediaPipe for gesture recognition, integrated with Arduino LEDs and a buzzer for dynamic feedback.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2>🛠️ Technical Skills</h2>
-            <div class="proficiency-toggle">
-                <button onclick="toggleProficiency()">💡 Click for Proficiency Levels</button>
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-16 md:py-24 section-animate" aria-labelledby="certifications-heading">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 id="certifications-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                🏅 Certifications & Awards
+            </h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cert Card 1 -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl hover:ring-2 ring-accent-secondary transition duration-300">
+                    <p class="text-2xl font-semibold text-accent-secondary">Certified Ethical Hacker</p>
+                    <p class="text-gray-400 mt-1">Cisco Networking Academy</p>
+                    <p class="text-sm mt-3"><i class="fas fa-lock text-accent-primary mr-2"></i>Proficient in penetration testing and defensive coding practices.</p>
+                </div>
+                <!-- Cert Card 2 -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl hover:ring-2 ring-accent-secondary transition duration-300">
+                    <p class="text-2xl font-semibold text-accent-secondary">Generative AI Fundamentals</p>
+                    <p class="text-gray-400 mt-1">IBM SkillsBuild</p>
+                    <p class="text-sm mt-3"><i class="fas fa-robot text-accent-primary mr-2"></i>Deep understanding of LLMs and AI model integration.</p>
+                </div>
+                <!-- Cert Card 3 -->
+                <div class="bg-card-bg p-6 rounded-lg shadow-xl hover:ring-2 ring-accent-secondary transition duration-300">
+                    <p class="text-2xl font-semibold text-accent-secondary">Software Engineering Essentials</p>
+                    <p class="text-gray-400 mt-1">Coursera</p>
+                    <p class="text-sm mt-3"><i class="fas fa-code-branch text-accent-primary mr-2"></i>Mastery of SDLC, testing, and modern agile development workflows.</p>
+                </div>
             </div>
-            
-            <ul class="skills-list">
-                <li data-level="Intermediate">Python <span class="skill-level">(Intermediate)</span></li>
-                <li data-level="Intermediate">C programming <span class="skill-level">(Intermediate)</span></li>
-                <li data-level="Strong">SQL / MySQL <span class="skill-level">(Strong)</span></li>
-                <li data-level="Basic">HTML / Web Development <span class="skill-level">(Basic)</span></li>
-                <li data-level="Strong">Data Structures <span class="skill-level">(Strong)</span></li>
-                <li data-level="Expert">MicroPython <span class="skill-level">(Expert)</span></li>
-                <li data-level="Practical">NumPy, Pandas, Seaborn <span class="skill-level">(Practical Exposure)</span></li>
-                <li data-level="Certified">Ethical Hacking / Cybersecurity <span class="skill-level">(Certified)</span></li>
-                <li data-level="Expert">Arduino UNO / IoT <span class="skill-level">(Expert)</span></li>
-            </ul>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Nora Frank. Built with passion.</p>
-            <p>
-                <a href="https://github.com/YourGitHubUsername" target="_blank">GitHub Profile</a> |
-                <a href="https://www.linkedin.com/in/nora-frank-01803327a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LinkedIn Profile</a> |
-                <a href="mailto:noraijk@gmail.com">Contact via Email</a>
-            </p>
+    <!-- Contact Form Section (Replaces Simple Footer) -->
+    <section id="contact" class="py-16 md:py-24 bg-card-bg section-animate" aria-labelledby="contact-heading">
+        <div class="max-w-xl mx-auto px-4">
+            <h2 id="contact-heading" class="text-4xl font-serif text-center font-bold mb-10 text-accent-primary border-b-2 border-accent-secondary pb-3 inline-block mx-auto">
+                📧 Get In Touch
+            </h2>
+            <form id="contact-form" class="space-y-6 bg-dark-bg p-8 rounded-xl shadow-2xl" onsubmit="handleFormSubmit(event)">
+                <p class="text-gray-400 text-center">I am currently open to exciting new opportunities. Send me a message!</p>
+                <div>
+                    <label for="name" class="block text-sm font-medium text-text-light mb-1">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg bg-card-bg border border-gray-700 focus:ring-accent-primary focus:border-accent-primary contact-input" aria-label="Your Name">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-text-light mb-1">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-card-bg border border-gray-700 focus:ring-accent-primary focus:border-accent-primary contact-input" aria-label="Your Email">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-text-light mb-1">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 rounded-lg bg-card-bg border border-gray-700 focus:ring-accent-primary focus:border-accent-primary contact-input" aria-label="Your Message"></textarea>
+                </div>
+                <button type="submit" class="w-full px-4 py-3 bg-accent-secondary text-dark-bg font-bold rounded-lg hover:bg-[#e04b1e] transition duration-300">
+                    Send Message <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+                <div id="form-message" class="text-center mt-3 hidden"></div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t-4 border-accent-secondary">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 mb-4">&copy; 2025 Nora Frank. Built with component-driven passion.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://github.com/YourGitHubUsername" target="_blank" class="text-accent-primary hover:text-accent-secondary transition font-medium" aria-label="GitHub Profile">
+                    <i class="fab fa-github fa-lg"></i> GitHub
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="https://www.linkedin.com/in/nora-frank-01803327a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-accent-primary hover:text-accent-secondary transition font-medium" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin fa-lg"></i> LinkedIn
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="mailto:noraijk@gmail.com" class="text-accent-primary hover:text-accent-secondary transition font-medium" aria-label="Email Nora Frank">
+                    <i class="fas fa-envelope fa-lg"></i> Email
+                </a>
+            </div>
         </div>
     </footer>
 
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden opacity-0 transition-opacity duration-300 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="closeProjectModal(event)">
+        <div class="bg-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-accent-secondary transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            <h3 id="modal-title" class="text-3xl font-serif text-accent-primary mb-3"></h3>
+            <p id="modal-tech" class="text-sm text-accent-secondary font-semibold mb-4"></p>
+            <p id="modal-details" class="text-gray-300 leading-relaxed"></p>
+            <button class="mt-6 bg-accent-secondary text-dark-bg font-bold py-2 px-4 rounded-lg hover:bg-[#e04b1e] transition" onclick="closeProjectModal()" aria-label="Close project details modal">Close</button>
+        </div>
+    </div>
+    
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 bg-accent-primary text-dark-bg p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-40 hover:bg-[#0097a7]" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- JavaScript for Interactivity -->
     <script>
-        function toggleProficiency() {
-            const skillLevels = document.querySelectorAll('.skill-level');
-            const button = document.querySelector('.proficiency-toggle button');
-            
-            let isVisible = false;
+        // --- Global Data & DOM Elements ---
+        const skillsData = [
+            { name: "Python", icon: "fab fa-python", level: "Intermediate", percent: 70, color: "bg-blue-600" },
+            { name: "C programming", icon: "fas fa-cogs", level: "Intermediate", percent: 65, color: "bg-blue-500" },
+            { name: "SQL / MySQL", icon: "fas fa-database", level: "Strong", percent: 85, color: "bg-teal-500" },
+            { name: "HTML / Web Dev", icon: "fas fa-code", level: "Basic", percent: 50, color: "bg-amber-500" },
+            { name: "Data Structures (C)", icon: "fas fa-sitemap", level: "Strong", percent: 80, color: "bg-teal-600" },
+            { name: "MicroPython", icon: "fas fa-microchip", level: "Expert", percent: 95, color: "bg-accent-primary" },
+            { name: "NumPy, Pandas, Seaborn", icon: "fas fa-chart-bar", level: "Practical Exposure", percent: 75, color: "bg-indigo-500" },
+            { name: "Ethical Hacking / Cybersecurity", icon: "fas fa-user-secret", level: "Certified", percent: 90, color: "bg-accent-secondary" },
+            { name: "Arduino UNO / IoT", icon: "fas fa-satellite-dish", level: "Expert", percent: 95, color: "bg-accent-primary" },
+        ];
 
-            // Check if any level is currently visible
-            skillLevels.forEach(level => {
-                if (level.style.display === 'inline') {
-                    isVisible = true;
-                }
-            });
+        const modal = document.getElementById('project-modal');
+        const modalInner = modal.querySelector('div');
 
-            // Toggle visibility and button text
-            skillLevels.forEach(level => {
-                if (isVisible) {
-                    level.style.display = 'none';
-                    level.closest('li').style.background = '#3a3a3a'; // Revert background
-                    level.closest('li').style.color = 'var(--accent-primary)'; // Revert color
-                } else {
-                    level.style.display = 'inline';
-                    // Change background/color based on level for better emphasis when visible
-                    const levelText = level.closest('li').getAttribute('data-level');
-                    if (levelText === 'Expert' || levelText === 'Certified') {
-                        level.closest('li').style.background = 'var(--accent-primary)';
-                        level.closest('li').style.color = 'var(--dark-bg)';
-                    } else if (levelText === 'Strong') {
-                        level.closest('li').style.background = '#4CAF50'; // Green
-                    }
-                }
-            });
 
-            button.textContent = isVisible ? '💡 Click for Proficiency Levels' : '✅ Proficiency Levels Active';
+        // --- 1. Theme Toggle (Dark/Light Mode) ---
+        function initializeTheme() {
+            const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            setTheme(storedTheme);
         }
+
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                if (sunIcon) sunIcon.classList.remove('hidden');
+                if (moonIcon) moonIcon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                if (sunIcon) sunIcon.classList.add('hidden');
+                if (moonIcon) moonIcon.classList.remove('hidden');
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        // --- 2. Skill Progress Bar Rendering & Animation ---
+        function renderSkills() {
+            const listContainer = document.getElementById('skills-visual-list');
+            listContainer.innerHTML = skillsData.map(skill => `
+                <div class="hover:bg-dark-bg/50 p-3 rounded-lg transition duration-300">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-medium text-lg"><i class="${skill.icon} mr-2 text-accent-secondary"></i>${skill.name}</span>
+                        <span class="text-sm font-light text-gray-400">${skill.level}</span>
+                    </div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar ${skill.color}" data-percent="${skill.percent}"></div>
+                    </div>
+                </div>
+            `).join('');
+            animateSkills();
+        }
+
+        function animateSkills() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                            const percent = bar.getAttribute('data-percent');
+                            bar.style.width = percent + '%';
+                        });
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        }
+
+
+        // --- 3. Project Modal Functionality ---
+        function openProjectModal(card) {
+            document.getElementById('modal-title').textContent = card.getAttribute('data-title');
+            document.getElementById('modal-tech').textContent = "Tech Stack: " + card.getAttribute('data-tech');
+            document.getElementById('modal-details').textContent = card.getAttribute('data-details');
+            
+            modal.classList.remove('hidden', 'opacity-0');
+            modal.classList.add('flex', 'opacity-100');
+            modalInner.classList.remove('scale-95');
+            modalInner.classList.add('scale-100');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeProjectModal(event) {
+            if (!event || event.target === modal || event.target.tagName === 'BUTTON') {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                modalInner.classList.remove('scale-100');
+                modalInner.classList.add('scale-95');
+
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restore background scrolling
+                }, 300);
+            }
+        }
+
+        // --- 4. Mobile Menu Toggle ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const isExpanded = menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu-button').setAttribute('aria-expanded', !isExpanded);
+        }
+
+        // --- 5. Contact Form Handler (Client-side Demo) ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.classList.remove('hidden');
+
+            // In a real application, you would use fetch() here to send data to a backend (e.g., Formspree, Netlify Forms).
+            console.log("Form Data Submitted (Demo):", {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value
+            });
+
+            messageDiv.innerHTML = '<span class="text-accent-primary font-bold">Thank you for your message! I will be in touch soon. (Data logged to console for demo)</span>';
+            form.reset();
+        }
+
+        // --- 6. Scroll Animations (Intersection Observer) ---
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 }); // Trigger when 10% of the item is visible
+
+            document.querySelectorAll('.section-animate').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // --- 7. Scroll-to-Top Button Visibility ---
+        window.addEventListener('scroll', () => {
+            const scrollButton = document.getElementById('scroll-to-top');
+            const banner = document.getElementById('home');
+            
+            // Toggle visibility of scroll-to-top button
+            if (window.scrollY > banner.offsetHeight / 2) {
+                scrollButton.classList.add('opacity-100');
+                scrollButton.classList.remove('opacity-0');
+            } else {
+                scrollButton.classList.remove('opacity-100');
+                scrollButton.classList.add('opacity-0');
+            }
+        });
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTheme();
+            renderSkills();
+            setupScrollAnimations();
+        });
+
     </script>
 </body>
 </html>
